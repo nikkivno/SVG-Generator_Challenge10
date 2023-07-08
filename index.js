@@ -35,6 +35,6 @@ inquirer
 .then((answers) => {
     const svgLogo = shapes(answers);
     fs.writeFile('logo.svg', svgLogo, (error) =>
-    error ? console.error(error) : console.log('You have successfully generated your SVG Logo!')
+    error ? console.error(error) : console.log('Generated logo.svg')
     );
 });
