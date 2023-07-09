@@ -32,9 +32,33 @@ inquirer
     }
 ])
 
+
 .then((answers) => {
-    const svgLogo = shape(answers);
-    fs.writeFile('logo.svg', svgLogo, (error) =>
-    error ? console.error(error) : console.log('Generated logo.svg')
-    );
-});
+    const { logo, logoColor } = answers;
+    const shape = createShape(logo);
+  
+    shape.setColor(logoColor);
+  
+    const svgLogo = shape.render();
+    fs.writeFile('logo.svg', svgLogo, (error) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log('Generated logo.svg');
+      }
+    });
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+  
+  function createShape(logo) {
+    switch (logo) {
+      case 'circle':
+        return new Shapes.Circle();
+      case 'square':
+        return new Shapes.Square();
+      case 'triangle':
+        return new Shapes.Triangle();
+    }
+  };
