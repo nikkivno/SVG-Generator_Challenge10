@@ -4,7 +4,7 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 const fs = require('fs');
 
-const shapes = require('./lib/shapes');
+const Shapes = require('./lib/shapes');
 
 
 inquirer
@@ -22,18 +22,18 @@ inquirer
     {
         type: 'input',
         message: 'what color would you like your logo? (please enter a color name or hexadecimal number)',
-        name: 'logo-color'
+        name: 'logoColor'
     },
     {
         type: 'maxlength-input',
         message: 'Please provide a three characters for the center of your logo.',
-        name: 'logo-name',
+        name: 'logoName',
         maxLength: 3,
     }
 ])
 
 .then((answers) => {
-    const svgLogo = shapes(answers);
+    const svgLogo = shape(answers);
     fs.writeFile('logo.svg', svgLogo, (error) =>
     error ? console.error(error) : console.log('Generated logo.svg')
     );
