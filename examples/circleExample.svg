@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300px" height="200px">
-       <circle cx="75" cy="75" r="70" fill="#0EA5AD" stroke-width="5"/>
-       <text x="75" y="85" text-anchor="middle" fill="white" font-size="30">SVG</text>
-       </svg>
