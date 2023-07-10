@@ -27,15 +27,15 @@ inquirer
     {
         type: 'maxlength-input',
         message: 'Please provide a three characters for the center of your logo.',
-        name: 'logoName',
+        name: 'logoText',
         maxLength: 3,
     }
 ])
 
 
 .then((answers) => {
-    const { logo, logoColor } = answers;
-    const shape = createShape(logo);
+    const { logo, logoColor, logoText } = answers;
+    const shape = createShape(logo, logoColor, logoText);
   
     shape.setColor(logoColor);
   
@@ -52,13 +52,13 @@ inquirer
     console.error(error);
   });
   
-  function createShape(logo) {
+  function createShape(logo, logoColor, logoText) {
     switch (logo) {
       case 'circle':
-        return new Shapes.Circle();
+        return new Shapes.Circle(logoColor, logoText);
       case 'square':
-        return new Shapes.Square();
+        return new Shapes.Square(logoColor, logoText);
       case 'triangle':
-        return new Shapes.Triangle();
+        return new Shapes.Triangle(logoColor, logoText);
     }
   };
