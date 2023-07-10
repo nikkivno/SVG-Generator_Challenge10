@@ -31,6 +31,8 @@ If I have time later down the line I would like to go back to this project and r
 
 [Walkthrough Video](https://drive.google.com/file/d/1CBCYCTBtrCjvjoLIUWYiYIVV_1vqcP5E/view?usp=sharing)
 
+Note: Example images and code are also provided in the 'examples' folder in the github repository. A mixture of color names and hexadecimals were used to show the functionality of the generator. 
+
 ![Circle](./examples/circleimage.png)
 
 ![Square](./examples/squareImage.png)
