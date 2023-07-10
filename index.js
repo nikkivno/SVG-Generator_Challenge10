@@ -29,15 +29,21 @@ inquirer
         message: 'Please provide a three characters for the center of your logo.',
         name: 'logoText',
         maxLength: 3,
+    },
+    {
+      type: 'input',
+      message: 'What text color would you like?(please enter a color name or hexadecimal number)',
+      name: 'textColor',
     }
 ])
 
 
 .then((answers) => {
-    const { logo, logoColor, logoText } = answers;
-    const shape = createShape(logo, logoColor, logoText);
+    const { logo, logoColor, logoText, textColor } = answers;
+    const shape = createShape(logo, logoColor, logoText, textColor);
   
     shape.setColor(logoColor);
+    shape.setTextColor(textColor);
   
     const svgLogo = shape.render();
     fs.writeFile('logo.svg', svgLogo, (error) => {
@@ -52,13 +58,13 @@ inquirer
     console.error(error);
   });
   
-  function createShape(logo, logoColor, logoText) {
+  function createShape(logo, logoColor, logoText, textColor) {
     switch (logo) {
       case 'circle':
-        return new Shapes.Circle(logoColor, logoText);
+        return new Shapes.Circle(logoColor, logoText, textColor);
       case 'square':
-        return new Shapes.Square(logoColor, logoText);
+        return new Shapes.Square(logoColor, logoText, textColor);
       case 'triangle':
-        return new Shapes.Triangle(logoColor, logoText);
+        return new Shapes.Triangle(logoColor, logoText, textColor);
     }
   };
