@@ -4,7 +4,7 @@ const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt)
 const fs = require('fs');
 
-const Shapes = require('./lib/shapes');
+const {Circle, Square, Triangle} = require('./lib/shapes');
 
 
 inquirer
@@ -43,6 +43,7 @@ inquirer
     const shape = createShape(logo, logoColor, logoText, textColor);
   
     shape.setColor(logoColor);
+    shape.setText(logoText)
     shape.setTextColor(textColor);
   
     const svgLogo = shape.render();
@@ -61,10 +62,10 @@ inquirer
   function createShape(logo, logoColor, logoText, textColor) {
     switch (logo) {
       case 'circle':
-        return new Shapes.Circle(logoColor, logoText, textColor);
+        return new Circle(logoColor, logoText, textColor);
       case 'square':
-        return new Shapes.Square(logoColor, logoText, textColor);
+        return new Square(logoColor, logoText, textColor);
       case 'triangle':
-        return new Shapes.Triangle(logoColor, logoText, textColor);
+        return new Triangle(logoColor, logoText, textColor);
     }
   };
